@@ -12,7 +12,7 @@ function UpdateProfile() {
   useEffect(() => {
     const fetchHandler = async () => {
       try {
-        const response = await axios.get(`http://localhost:8081/user/${id}`);
+        const response = await axios.get(`http://localhost:8085/user/${id}`);
         setInputs(response.data.user);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -22,7 +22,7 @@ function UpdateProfile() {
   }, [id]);
   const sendRequest = async () => {
     await axios
-      .put(`http://localhost:8081/user/${id}`, {
+      .put(`http://localhost:8085/user/${id}`, {
         fullName: String(inputs.fullName),
         email: String(inputs.email),
         password: String(inputs.password),

@@ -16,7 +16,7 @@ function Profile() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:8081/user/${userId}`);
+        const response = await fetch(`http://localhost:8085/user/${userId}`);
         const data = await response.json();
         if (response.ok) {
           setUser(data.user);
@@ -46,7 +46,7 @@ function Profile() {
     // Proceed only if the user confirms
     if (isConfirmed) {
       try {
-        const response = await fetch(`http://localhost:8081/user/${userId}`, {
+        const response = await fetch(`http://localhost:8085/user/${userId}`, {
           method: "DELETE",
         });
         const data = await response.json();

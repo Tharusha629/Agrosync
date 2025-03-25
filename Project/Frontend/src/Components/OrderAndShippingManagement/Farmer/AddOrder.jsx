@@ -62,7 +62,7 @@ function AddOrder() {
   const sendRequest = async () => {
     try {
       console.log("Sending request with data:", inputs); // Log the data being sent
-      const response = await axios.post("http://localhost:8081/order", {
+      const response = await axios.post("http://localhost:8085/order", {
         orderID: inputs.orderID,
         serviceName: inputs.serviceName,
         servicePrice: inputs.servicePrice,
@@ -100,7 +100,7 @@ function AddOrder() {
   const handleSendCode = async () => {
     try {
       const checkResponse = await axios.post(
-        "http://localhost:8081/order/send-email",
+        "http://localhost:8085/order/send-email",
         {
           email: email,
         }

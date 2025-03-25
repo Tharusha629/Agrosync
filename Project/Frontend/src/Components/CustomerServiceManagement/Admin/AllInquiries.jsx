@@ -12,7 +12,7 @@ function AllInquiries() {
   useEffect(() => {
     const fetchInquiries = async () => {
       try {
-        const response = await axios.get("http://localhost:8081/customer");
+        const response = await axios.get("http://localhost:8085/customer");
         if (response.status === 200) {
           setInquiries(response.data.inquirie);
         } else {
@@ -38,7 +38,7 @@ function AllInquiries() {
     if (isConfirmed) {
       try {
         const response = await axios.delete(
-          `http://localhost:8081/customer/${id}`
+          `http://localhost:8085/customer/${id}`
         );
         if (response.status === 200) {
           alert("Inquiry deleted successfully");

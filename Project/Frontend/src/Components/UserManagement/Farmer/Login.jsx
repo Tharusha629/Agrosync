@@ -8,7 +8,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8081/user/login", {
+      const response = await fetch("http://localhost:8085/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,6 +71,17 @@ function Login() {
             >
               Register
             </span>
+            
+          </p>
+          <p className="noacc">
+            Log in as Admin{" "}
+            <span
+              className="noacc_link"
+              onClick={() => (window.location.href = "/adminLogin")}
+            >
+              Log in
+            </span>
+            
           </p>
         </form>
       </div>

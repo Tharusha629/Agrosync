@@ -9,7 +9,7 @@ function MyInquiries() {
   useEffect(() => {
     const fetchInquiries = async () => {
       try {
-        const response = await axios.get("http://localhost:8081/customer");
+        const response = await axios.get("http://localhost:8085/customer");
         console.log("Response data:", response.data);
 
         if (response.status === 200) {

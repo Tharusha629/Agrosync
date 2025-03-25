@@ -19,12 +19,11 @@ function Register() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     await sendRequest();
   };
   const sendRequest = async () => {
     try {
-      const response = await axios.post("http://localhost:8081/user", {
+      const response = await axios.post("http://localhost:8085/user", {
         fullName: inputs.fullName,
         email: inputs.email,
         password: inputs.password,

@@ -11,7 +11,7 @@ function AllOrders() {
   useEffect(() => {
     const fetchInquiries = async () => {
       try {
-        const response = await axios.get("http://localhost:8081/order");
+        const response = await axios.get("http://localhost:8085/order");
         if (response.status === 200) {
           setOrder(response.data.order);
         } else {

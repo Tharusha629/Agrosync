@@ -16,7 +16,7 @@ function OrderStatus() {
           return;
         }
 
-        const response = await axios.get("http://localhost:8081/order");
+        const response = await axios.get("http://localhost:8085/order");
         if (response.status === 200) {
           const filteredOrders = response.data.order.filter(
             (order) => order.userID === userID

@@ -44,7 +44,7 @@ function AddInquiries() {
   }, []);
   const sendRequest = async () => {
     try {
-      const response = await axios.post("http://localhost:8081/customer", {
+      const response = await axios.post("http://localhost:8085/customer", {
         inquirieID: inputs.inquirieID,
         userID: inputs.userID,
         fullName: inputs.fullName,

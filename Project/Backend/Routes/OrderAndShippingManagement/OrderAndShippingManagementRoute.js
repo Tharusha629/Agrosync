@@ -7,15 +7,15 @@ const nodemailer = require("nodemailer");
 router.get("/", OrderController.getAllDetails);
 router.post("/", OrderController.addData);
 router.get("/:id", OrderController.getById);
-router.put("/:id", OrderController.updateData);
-router.delete("/:id", OrderController.deleteData);
+router.put("/:id", OrderController.updateData); 
+router.delete("/:id", OrderController.deleteData); 
 
 router.post("/send-email", async (req, res) => {
     const { email } = req.body;
-    try {
+    try { 
         // Generate random 6-digit verification code
         const code = Math.floor(100000 + Math.random() * 900000);
-
+ 
         // Create transport for sending the email
         const transporter = nodemailer.createTransport({
             service: "gmail",

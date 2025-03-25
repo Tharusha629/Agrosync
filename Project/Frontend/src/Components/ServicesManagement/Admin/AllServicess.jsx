@@ -13,7 +13,7 @@ function AllServicess() {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get("http://localhost:8081/service");
+        const response = await axios.get("http://localhost:8085/service");
         if (response.status === 200) {
           setServices(response.data.service); // Assuming the response contains a `service` array
         } else {
@@ -45,7 +45,7 @@ function AllServicess() {
     if (isConfirmed) {
       try {
         const response = await axios.delete(
-          `http://localhost:8081/service/${id}`
+          `http://localhost:8085/service/${id}`
         );
         if (response.status === 200) {
           alert("Service deleted successfully");

@@ -12,7 +12,7 @@ function UpdateOrderStatus() {
   useEffect(() => {
     const fetchHandler = async () => {
       try {
-        const response = await axios.get(`http://localhost:8081/order/${id}`);
+        const response = await axios.get(`http://localhost:8085/order/${id}`);
         setInputs(response.data.order);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -22,7 +22,7 @@ function UpdateOrderStatus() {
   }, [id]);
   const sendRequest = async () => {
     await axios
-      .put(`http://localhost:8081/order/${id}`, {
+      .put(`http://localhost:8085/order/${id}`, {
         orderID: String(inputs.orderID),
         serviceName: String(inputs.serviceName),
         servicePrice: String(inputs.servicePrice),

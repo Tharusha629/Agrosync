@@ -13,7 +13,7 @@ function AllFarmers() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:8081/user");
+        const response = await fetch("http://localhost:8085/user");
         const data = await response.json();
         if (response.ok) {
           setUsers(data.user); // Assuming the response contains a `user` array
@@ -49,7 +49,7 @@ function AllFarmers() {
     );
     if (isConfirmed) {
       try {
-        const response = await fetch(`http://localhost:8081/user/${userId}`, {
+        const response = await fetch(`http://localhost:8085/user/${userId}`, {
           method: "DELETE",
         });
         const data = await response.json();

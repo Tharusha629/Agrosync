@@ -35,7 +35,7 @@ function AddServicess() {
   };
   const sendRequest = async () => {
     try {
-      const response = await axios.post("http://localhost:8081/service", {
+      const response = await axios.post("http://localhost:8085/service", {
         serviceID: inputs.serviceID,
         title: inputs.title,
         description: inputs.description,

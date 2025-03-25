@@ -12,7 +12,7 @@ function ReplyInquiries() {
     const fetchHandler = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8081/customer/${id}`
+          `http://localhost:8085/customer/${id}`
         );
         setInputs(response.data.inquirie);
       } catch (error) {
@@ -23,7 +23,7 @@ function ReplyInquiries() {
   }, [id]);
   const sendRequest = async () => {
     await axios
-      .put(`http://localhost:8081/customer/${id}`, {
+      .put(`http://localhost:8085/customer/${id}`, {
         inquirieID: String(inputs.inquirieID),
         userID: String(inputs.userID),
         fullName: String(inputs.fullName),

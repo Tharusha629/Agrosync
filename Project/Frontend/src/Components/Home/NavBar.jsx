@@ -14,39 +14,41 @@ function NavBar() {
             <img src={Logo} alt="logo" className="nav_logo" />
             <div className="nav_item_con">
               <p
-                className={`nav_item ${
-                  currentPath === "/home" ? "nav_item_active" : ""
-                }`}
+                className={`nav_item ${currentPath === "/home" ? "nav_item_active" : ""
+                  }`}
                 onClick={() => (window.location.href = "/home")}
               >
                 Home
               </p>
               <p
-                className={`nav_item ${
-                  currentPath === "/serviceList" ? "nav_item_active" : ""
-                }`}
+                className={`nav_item ${currentPath === "/serviceList" ? "nav_item_active" : ""
+                  }`}
                 onClick={() => (window.location.href = "/serviceList")}
               >
                 Services
               </p>
               <p
-                className={`nav_item ${
-                  currentPath === "/addInquiries" ? "nav_item_active" : ""
-                }`}
+                className={`nav_item ${currentPath === "/addInquiries" ? "nav_item_active" : ""
+                  }`}
                 onClick={() => (window.location.href = "/addInquiries")}
               >
                 Inquiry
               </p>
+              <p
+                className="nav_item"
+                onClick={() => (window.location.href = "http://localhost:5176/")}
+              >
+                Special
+              </p>
+
               <RiAccountCircleFill
-                className={`nav_item_icon ${
-                  currentPath === "/profile" ? "nav_item_icon_active" : ""
-                }`}
+                className={`nav_item_icon ${currentPath === "/profile" ? "nav_item_icon_active" : ""
+                  }`}
                 onClick={() => (window.location.href = "/profile")}
               />
               <RiLogoutBoxRFill
-                className={`nav_item_icon ${
-                  currentPath === "/" ? "nav_item_icon_active" : ""
-                }`}
+                className={`nav_item_icon ${currentPath === "/" ? "nav_item_icon_active" : ""
+                  }`}
                 onClick={() => (window.location.href = "/")}
               />
             </div>

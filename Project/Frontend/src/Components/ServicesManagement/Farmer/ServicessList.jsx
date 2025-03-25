@@ -8,7 +8,7 @@ function ServicessList() {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get("http://localhost:8081/service");
+        const response = await axios.get("http://localhost:8085/service");
         if (response.status === 200) {
           setServices(response.data.service);
         } else {

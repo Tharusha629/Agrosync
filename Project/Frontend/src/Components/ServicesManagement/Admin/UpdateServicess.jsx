@@ -12,7 +12,7 @@ function UpdateServicess() {
   useEffect(() => {
     const fetchHandler = async () => {
       try {
-        const response = await axios.get(`http://localhost:8081/service/${id}`);
+        const response = await axios.get(`http://localhost:8085/service/${id}`);
         setInputs(response.data.service);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -22,7 +22,7 @@ function UpdateServicess() {
   }, [id]);
   const sendRequest = async () => {
     await axios
-      .put(`http://localhost:8081/service/${id}`, {
+      .put(`http://localhost:8085/service/${id}`, {
         serviceID: String(inputs.serviceID),
         title: String(inputs.title),
         description: String(inputs.description),
