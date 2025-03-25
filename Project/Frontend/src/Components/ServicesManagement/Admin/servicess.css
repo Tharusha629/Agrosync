@@ -1,0 +1,83 @@
+.lst_actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.book_btn {
+  width: 200px;
+  background-color: #346421;
+  border: 1px solid #346421;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 8px 0;
+  border-radius: 2px;
+  transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+}
+
+.book_btn:hover {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* 3D-like shadow effect */
+}
+
+.order-status-title_new {
+  font-size: 30px;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.order_card_continer {
+  display: flex;
+  gap: 35px;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 40px 0 80px 0;
+  flex-wrap: wrap;
+}
+
+.order-status-card {
+  width: 376px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-status-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.order-status-detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.order-status-detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-status-label {
+  font-weight: 600;
+  color: #555;
+}
+
+.detail-status-value {
+  color: #333;
+  font-weight: 500;
+}
+
+.no-status-orders {
+  font-size: 1.2rem;
+  color: #777;
+  text-align: center;
+  margin-top: 2rem;
+}

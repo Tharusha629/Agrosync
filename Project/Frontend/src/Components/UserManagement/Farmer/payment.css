@@ -1,0 +1,100 @@
+.payment_continer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.payment_con_left {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 25px;
+  padding: 0 35px;
+}
+.payment_card_btn {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  height: 50px;
+}
+.payment_card_btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.paypal {
+  background-color: #009cde;
+  color: white;
+}
+.payment_icon {
+  width: 35px;
+}
+.payment_card_btn_name {
+  font-size: 18px;
+  font-weight: 700;
+}
+.card_payment_continer,
+.paypal_payment_continer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px;
+  flex-direction: column;
+}
+.pay_card_topic {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 40px;
+  font-weight: 600;
+}
+.fech_data_con_name {
+  font-size: 30px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.fech_data_con {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 450px;
+}
+.card_data_add_continer {
+  width: 600px;
+  padding: 25px;
+  margin: 20px auto;
+  border: 1px solid #346421;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.date_cvv_con{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+/* Style the PayPal button to take full width */
+.paypalbtn {
+  width: 100% !important;
+}
+
+.paypal-button {
+  width: 100% !important;
+}
