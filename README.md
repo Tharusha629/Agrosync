@@ -1,0 +1,2 @@
+# Agrosync
+Agriculture management system
