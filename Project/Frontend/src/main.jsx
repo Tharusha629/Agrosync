@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-// Create the root element  and render the App component inside it 
+// Create the root element   
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
