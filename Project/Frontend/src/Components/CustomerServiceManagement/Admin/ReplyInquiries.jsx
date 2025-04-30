@@ -51,7 +51,7 @@ function ReplyInquiries() {
     <div>
       <AdminNavBar />
       <p className="topic_from">
-        Reply Inquiry <span className="dot">.</span>
+        Respond to Inquiry<span className="dot">.</span>
       </p>
       <form onSubmit={handleSubmit} className="data_form">
         <div className="data_form_section">
