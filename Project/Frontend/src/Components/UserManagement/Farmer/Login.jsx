@@ -35,7 +35,7 @@ function Login() {
         <div className="auth_from_colum"></div>
         <form className="auth_from_in" onSubmit={handleLogin}>
           <p className="auth_topic">Welcome To Agrosync</p>
-          <p className="auth_topic_sub">Enter Your Details And Login Here.</p>
+          <p className="auth_topic_sub">Enter Your Login Information Below</p>
           <div>
             <label className="data_from_lable">Email</label>
             <input
