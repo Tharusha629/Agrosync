@@ -49,7 +49,7 @@ function AdminLogin() {
           </div>
           <button className="from_btn">Login</button>
           <p className="noacc">
-            Log in as Admin{" "}
+          System Admin Login{" "}
             <span
               className="noacc_link"
               onClick={() => (window.location.href = "/")}
