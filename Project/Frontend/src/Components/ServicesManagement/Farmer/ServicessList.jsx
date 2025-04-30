@@ -34,7 +34,7 @@ function ServicessList() {
     <div>
       <NavBar />
       <p className="topic_from">
-        Our Services <span className="dot">.</span>
+      Services We Offer <span className="dot">.</span>
       </p>
       <div className="page_with_set">
         <div className="admin_action_continer">
