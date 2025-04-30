@@ -5,8 +5,7 @@ import App from "./App";
 import "./index.css";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 // Create the root element  and render the App component inside it 
-// using ReactDOM.createRoot and React.StrictMode for better performance and debugging.
-// The PayPalScriptProvider is used to provide the PayPal SDK to the application.
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
