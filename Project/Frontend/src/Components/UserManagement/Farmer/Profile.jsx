@@ -128,7 +128,7 @@ function Profile() {
               onClick={() => (window.location.href = "/orderStatus")}
             >
               <img src={OrderImg} className="inq_card_img" alt="img" />
-              <p className="inq_card_btn">My Orders</p>
+              <p className="inq_card_btn">Purchase History</p>
             </div>
           </div>
         </div>
