@@ -1,0 +1,231 @@
+/* Base Styles */
+.services-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9fafb;
+    min-height: 100vh;
+  }
+  
+  .services-header {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+  }
+  
+  .services-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .title-dot {
+    color: #4CAF50;
+  }
+  
+  .services-subtitle {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  /* Search Styles */
+  .search-container {
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .search-input-wrapper {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .search-input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 2px 15px rgba(76, 175, 80, 0.2);
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #95a5a6;
+  }
+  
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .service-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+  }
+  
+  .service-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  
+  .service-description {
+    color: #7f8c8d;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Features Section */
+  .features-section {
+    margin-top: 1.5rem;
+  }
+  
+  .features-title {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+  }
+  
+  .features-list {
+    padding-left: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+  
+  .feature-item {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #34495e;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+  }
+  
+  .feature-icon {
+    color: #4CAF50;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Card Footer */
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+  }
+  
+  .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+  }
+  
+  .book-button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(76, 175, 80, 0.3);
+    display: flex;
+    align-items: center;
+  }
+  
+  .book-button:hover {
+    background: #3e8e41;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+  }
+  
+  .book-button:active {
+    transform: translateY(0);
+  }
+  
+  /* Loading and No Results States */
+  .loading-spinner, .no-results {
+    text-align: center;
+    padding: 3rem;
+    font-size: 1.1rem;
+    color: #7f8c8d;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .services-header {
+      padding: 2rem 1rem 1.5rem;
+    }
+    
+    .services-title {
+      font-size: 2rem;
+    }
+    
+    .services-grid {
+      grid-template-columns: 1fr;
+      padding: 0;
+    }
+    
+    .search-container {
+      padding: 0 0.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card-footer {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    
+    .book-button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
