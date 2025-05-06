@@ -1,63 +1,190 @@
 import React, { useState } from "react";
-import { FaRedo } from "react-icons/fa"; 
+import { FaRedo } from "react-icons/fa";
+
+const helpData = {
+  chemicals: {
+    crops: {
+      tomato: {
+        blight: "✅ Use Copper Fungicide. Apply every 7 days.",
+      },
+    },
+  },
+  pests: {
+    crops: {
+      potato: {
+        aphids: "✅ Use Neem Oil Spray. Apply every 5 days.",
+      },
+    },
+  },
+  diseases: {
+    crops: {
+      wheat: {
+        rust: "✅ Use Sulfur-based fungicide. Avoid overwatering.",
+      },
+    },
+  },
+  irrigation: {
+    crops: {
+      rice: {
+        dry: "✅ Increase irrigation. Water twice daily.",
+      },
+    },
+  },
+  fertilizers: {
+    crops: {
+      maize: {
+        flowering: "✅ Use NPK fertilizer. Apply 50kg per acre.",
+      },
+    },
+  },
+  weather: {
+    crops: {
+      tomato: {
+        rain: "✅ Delay planting until after the rain.",
+      },
+    },
+  },
+  soil: {
+    crops: {
+      wheat: {
+        sandy: "✅ Add compost to improve water retention.",
+      },
+    },
+  },
+  crop: {
+    crops: {
+      dry_area: {
+        crops: "✅ Recommended crops: Millet, Sorghum.",
+      },
+    },
+  },
+  harvesting: {
+    crops: {
+      tomato: {
+        Tips: "✅ Harvest when fruits are firm and fully colored.",
+      },
+    },
+  },
+  market: {
+    crops: {
+      potato: {
+        Information: "✅ Current price: $0.50/kg. Prices expected to rise next month.",
+      },
+    },
+  },
+  equipment: {
+    crops: {
+      tractor: {
+        Tips: "✅ Check oil levels weekly. Clean air filters regularly.",
+      },
+    },
+  },
+  organic: {
+    crops: {
+      tomato: {
+        Tips: "✅ Use neem oil for pest control. Add compost to improve soil.",
+      },
+    },
+  },
+};
+
+const categoryColors = {
+  chemicals: "bg-blue-500 hover:bg-blue-600",
+  pests: "bg-teal-500 hover:bg-teal-600",
+  diseases: "bg-green-500 hover:bg-green-600",
+  irrigation: "bg-purple-500 hover:bg-purple-600",
+  fertilizers: "bg-yellow-500 hover:bg-yellow-600",
+  weather: "bg-orange-500 hover:bg-orange-600",
+  soil: "bg-amber-700 hover:bg-amber-800",
+  crop: "bg-cyan-500 hover:bg-cyan-600",
+  harvesting: "bg-pink-500 hover:bg-pink-600",
+  market: "bg-indigo-500 hover:bg-indigo-600",
+  equipment: "bg-red-500 hover:bg-red-600",
+  organic: "bg-lime-500 hover:bg-lime-600",
+};
 
 const HelpMenu = () => {
   const [category, setCategory] = useState("");
   const [crop, setCrop] = useState("");
-  const [selection, setSelection] = useState("");
-  const [isOpen, setIsOpen] = useState(false); 
+  const [problem, setProblem] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Function to reset all states (refresh the help menu)
   const handleRefresh = () => {
     setCategory("");
     setCrop("");
-    setSelection("");
+    setProblem("");
   };
 
   const renderCategories = () => (
     <div className="grid grid-cols-2 gap-2 mb-4">
-      <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600" onClick={() => setCategory("chemicals")}>Chemicals</button>
-      <button className="bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600" onClick={() => setCategory("pests")}>Pests</button>
-      <button className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600" onClick={() => setCategory("diseases")}>Diseases</button>
-      <button className="bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600" onClick={() => setCategory("irrigation")}>Irrigation</button>
-      <button className="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600" onClick={() => setCategory("fertilizers")}>Fertilizers</button>
-      <button className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600" onClick={() => setCategory("weather")}>Weather Advice</button>
-      <button className="bg-amber-700 text-white px-4 py-2 rounded-md hover:bg-amber-800" onClick={() => setCategory("soil")}>Soil Health</button>
-      <button className="bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600" onClick={() => setCategory("crop")}>Crop Selection</button>
-      <button className="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600" onClick={() => setCategory("harvesting")}>Harvesting</button>
-      <button className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600" onClick={() => setCategory("market")}>Market Prices</button>
-      <button className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600" onClick={() => setCategory("equipment")}>Equipment</button>
-      <button className="bg-lime-500 text-white px-4 py-2 rounded-md hover:bg-lime-600" onClick={() => setCategory("organic")}>Organic Farming</button>
+      {Object.keys(helpData).map((cat) => (
+        <button
+          key={cat}
+          className={`${categoryColors[cat] || "bg-gray-500 hover:bg-gray-600"} text-white px-4 py-2 rounded-md capitalize`}
+          onClick={() => {
+            setCategory(cat);
+            setCrop("");
+            setProblem("");
+          }}
+        >
+          {cat.replace(/^\w/, (c) => c.toUpperCase())}
+        </button>
+      ))}
     </div>
   );
 
-  const renderCropSelection = () => (
-    <div>
-      <h3 className="text-lg font-semibold mb-2">Select Crop:</h3>
-      <div className="grid grid-cols-2 gap-2">
-        <button className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600" onClick={() => setCrop("tomato")}>Tomato</button>
-        <button className="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600" onClick={() => setCrop("potato")}>Potato</button>
-        <button className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600" onClick={() => setCrop("wheat")}>Wheat</button>
+  const renderCropSelection = () => {
+    const cropKeys = Object.keys(helpData[category]?.crops || {});
+    return (
+      <div>
+        <h3 className="text-lg font-semibold mb-2">Select Crop:</h3>
+        <div className="flex flex-wrap gap-2 justify-center items-center">
+          {cropKeys.map((cropKey) => (
+            <button
+              key={cropKey}
+              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 capitalize"
+              onClick={() => setCrop(cropKey)}
+            >
+              {cropKey}
+            </button>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
-  const renderProblemSelection = () => (
-    <div>
-      <h3 className="text-lg font-semibold mb-2">Select Problem:</h3>
-      <div className="grid grid-cols-2 gap-2">
-        <button className="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600" onClick={() => setSelection("blight")}>Blight</button>
-        <button className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600" onClick={() => setSelection("aphids")}>Aphids</button>
+  const renderProblemSelection = () => {
+    const problemKeys = Object.keys(helpData[category]?.crops[crop] || {});
+    if (problemKeys.length === 1 && problemKeys[0] === "default") {
+      setProblem("default");
+      return null;
+    }
+
+    return (
+      <div>
+        <h3 className="text-lg font-semibold mb-2">Select Problem:</h3>
+        <div className="flex flex-wrap gap-2 justify-center items-center">
+          {problemKeys.map((problemKey) => (
+            <button
+              key={problemKey}
+              className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 capitalize"
+              onClick={() => setProblem(problemKey)}
+            >
+              {problemKey}
+            </button>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const renderAdvice = () => {
-    if (selection === "blight") {
-      return <p className="text-green-300">✅ Use Copper Fungicide. Apply every 7 days.</p>;
-    } else if (selection === "aphids") {
-      return <p className="text-green-300">✅ Use Neem Oil Spray. Apply every 5 days.</p>;
-    }
+    const advice = helpData[category]?.crops[crop]?.[problem];
+    return advice ? (
+      <p className="text-green-300 mt-4">{advice}</p>
+    ) : (
+      <p className="text-yellow-300 mt-4">⚠ No advice found.</p>
+    );
   };
 
   const renderContent = () => {
@@ -69,7 +196,7 @@ const HelpMenu = () => {
       return renderCropSelection();
     }
 
-    if (!selection) {
+    if (!problem && !helpData[category]?.crops[crop]?.default) {
       return renderProblemSelection();
     }
 
@@ -78,7 +205,6 @@ const HelpMenu = () => {
 
   return (
     <>
-      {/* Button to open/close the Help Menu */}
       {!isOpen && (
         <button
           className="fixed bottom-5 right-5 bg-blue-500 text-white p-4 rounded-lg shadow-lg hover:bg-blue-600"
@@ -88,26 +214,20 @@ const HelpMenu = () => {
         </button>
       )}
 
-      {/* Help Menu when open */}
       {isOpen && (
-        <div className="fixed bottom-5 right-5 bg-gray-800 text-white p-6 rounded-lg shadow-lg w-80">
+        <div className="fixed bottom-5 right-5 bg-gray-800 text-white p-6 rounded-lg shadow-lg w-80 z-50">
           <h3 className="text-xl font-semibold mb-4">Help Menu</h3>
           {renderCategories()}
-          <div className="mt-4 p-4 bg-gray-700 rounded-lg">
-            {renderContent()}
-          </div>
-          
-          {/* Close Button */}
+          <div className="mt-4 p-4 bg-gray-700 rounded-lg">{renderContent()}</div>
+
           <button
-            className="absolute top-0 right-2 text-white text-4xl "
+            className="absolute top-0 right-2 text-white text-4xl"
             onClick={() => setIsOpen(false)}
           >
             ×
           </button>
-
-          {/* Refresh Icon Button */}
           <button
-            className="absolute top-2 right-10 text-white text-xl pt-1 "
+            className="absolute top-2 right-10 text-white text-xl pt-1"
             onClick={handleRefresh}
           >
             <FaRedo />
