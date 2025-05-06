@@ -100,7 +100,7 @@
   }
 }
 .nav_item_icon {
-  font-size: 30px;
+  font-size: 40px;
   color: #346421;
   cursor: pointer;
 }
@@ -130,7 +130,7 @@
   background-color: white;
 }
 .nav_logo {
-  width: 100px;
+  width: 150px;
   cursor: pointer;
 }
 .nav_item_con {
@@ -141,8 +141,9 @@
   padding: 20px 0;
 }
 .nav_item {
+
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 20px;
   color: black;
   font-weight: 500;
   letter-spacing: 0.02em;

@@ -7,9 +7,7 @@ import { useNavigate } from "react-router";
 function AddOrder() {
   const history = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  // eslint-disable-next-line no-unused-vars
   const [isCodeSent, setIsCodeSent] = useState(false);
-  // eslint-disable-next-line no-unused-vars
   const [email, setEmail] = useState("");
   const [inputCode, setInputCode] = useState("");
   const savedCode = localStorage.getItem("verificationCode");
@@ -22,6 +20,59 @@ function AddOrder() {
     phone: "",
     address: "",
   });
+  const [errors, setErrors] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    address: "",
+  });
+
+  const validateField = (name, value) => {
+    switch (name) {
+      case "fullName":
+        if (!value.trim()) return "Full name is required";
+        if (!/^[A-Za-z\s]{2,50}$/.test(value))
+          return "Name should only contain letters and spaces (2-50 characters)";
+        return "";
+      case "email":
+        if (!value) return "Email is required";
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+          return "Invalid email format";
+        return "";
+      case "phone":
+        if (!value) return "Phone number is required";
+        if (!/^[0-9]{10}$/.test(value))
+          return "Phone number must be exactly 10 digits";
+        return "";
+      case "address":
+        if (!value.trim()) return "Address is required";
+        if (value.length < 10)
+          return "Address must be at least 10 characters long";
+        if (value.length > 200)
+          return "Address must not exceed 200 characters";
+        return "";
+      default:
+        return "";
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    // Update the input value
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      [name]: value,
+    }));
+
+    // Validate and update errors
+    const error = validateField(name, value);
+    setErrors((prev) => ({
+      ...prev,
+      [name]: error,
+    }));
+  };
+
   useEffect(() => {
     // Fetch data from localStorage
     const userID = localStorage.getItem("UserID");
@@ -47,17 +98,27 @@ function AddOrder() {
       orderID: generateID(),
     }));
   }, []);
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setInputs((prevInputs) => ({
-      ...prevInputs,
-      [name]: value,
-    }));
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validate all fields
+    const newErrors = {};
+    Object.keys(inputs).forEach((key) => {
+      if (["fullName", "email", "phone", "address"].includes(key)) {
+        newErrors[key] = validateField(key, inputs[key]);
+      }
+    });
+
+    setErrors(newErrors);
+
+    // Check if there are any errors
+    if (Object.values(newErrors).some((error) => error !== "")) {
+      alert("Please fix all errors before submitting");
+      return;
+    }
+
     localStorage.setItem("EnterEmail", inputs.email);
-    setShowModal(true); // Only show the modal for verification
+    setShowModal(true);
   };
   const sendRequest = async () => {
     try {
@@ -182,25 +243,23 @@ function AddOrder() {
         <div className="data_form_section">
           <label className="data_from_lable">full Name</label>
           <input
-            className="data_from_input"
+            className={`data_from_input ${errors.fullName ? "error-input" : ""}`}
             type="text"
             id="fullName"
             name="fullName"
             required
             placeholder="Enter Your Full Name"
-            value={inputs.title}
-            onChange={(e) => {
-              const re = /^[A-Za-z\s]*$/;
-              if (re.test(e.target.value)) {
-                handleChange(e);
-              }
-            }}
+            value={inputs.fullName}
+            onChange={handleChange}
           />
+          {errors.fullName && (
+            <span className="error-message">{errors.fullName}</span>
+          )}
         </div>
         <div className="data_form_section">
           <label className="data_from_lable">email</label>
           <input
-            className="data_from_input"
+            className={`data_from_input ${errors.email ? "error-input" : ""}`}
             type="email"
             id="email"
             name="email"
@@ -209,32 +268,31 @@ function AddOrder() {
             value={inputs.email}
             onChange={handleChange}
           />
+          {errors.email && (
+            <span className="error-message">{errors.email}</span>
+          )}
         </div>
         <div className="data_form_section">
           <label className="data_from_lable">Phone</label>
           <input
-            className="data_from_input"
+            className={`data_from_input ${errors.phone ? "error-input" : ""}`}
             type="text"
             id="phone"
             placeholder="Enter Your Phone Number"
             name="phone"
             required
-            onChange={(e) => {
-              const re = /^[0-9\b]{0,10}$/;
-              if (re.test(e.target.value)) {
-                handleChange(e);
-              }
-            }}
+            onChange={handleChange}
             maxLength="10"
-            pattern="[0-9]{10}"
-            title="Please enter exactly 10 digits."
             value={inputs.phone}
           />
+          {errors.phone && (
+            <span className="error-message">{errors.phone}</span>
+          )}
         </div>
         <div className="data_form_section">
           <label className="data_from_lable">Address</label>
           <textarea
-            className="data_from_input"
+            className={`data_from_input ${errors.address ? "error-input" : ""}`}
             type="text"
             id="address"
             placeholder="Enter Your Address"
@@ -244,6 +302,9 @@ function AddOrder() {
             value={inputs.address}
             onChange={handleChange}
           />
+          {errors.address && (
+            <span className="error-message">{errors.address}</span>
+          )}
         </div>
         <br />
         <button className="from_btn">confirm payment</button>

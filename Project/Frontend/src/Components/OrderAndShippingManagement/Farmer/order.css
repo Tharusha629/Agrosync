@@ -1,15 +1,19 @@
+/* General Styling */
 .dot_new {
   color: #346421;
 }
+
 .order_details_topic {
   width: 100%;
   font-weight: 500;
   font-size: 20px;
 }
+
 .data_from_lable_sub {
   color: gray;
   font-weight: 500;
 }
+
 .order_detail_card {
   width: 100%;
   display: flex;
@@ -20,6 +24,8 @@
   border-bottom: 1px solid gray;
   margin-bottom: 15px;
 }
+
+/* Modal Styles */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -38,7 +44,20 @@
   border-radius: 8px;
   text-align: center;
   width: 450px;
+  animation: fadeInScale 0.3s ease-in-out;
 }
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .close_btn {
   position: relative;
   left: 190px;
@@ -46,6 +65,7 @@
   cursor: pointer;
 }
 
+/* Main Container */
 .order-status-container {
   background-color: #ffffff;
   border-radius: 12px;
@@ -55,6 +75,7 @@
   text-align: center;
   margin: 45px auto;
 }
+
 .order-status-container_sub {
   padding: 2rem;
 }
@@ -66,6 +87,7 @@
   text-transform: uppercase;
 }
 
+/* Order Details Section */
 .order-details {
   display: flex;
   flex-direction: column;
@@ -80,6 +102,12 @@
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-detail-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .detail-label {
@@ -92,12 +120,15 @@
   font-weight: 500;
 }
 
+/* No Order Message */
 .no-order {
   font-size: 1.2rem;
   color: #777;
   text-align: center;
   margin-top: 2rem;
 }
+
+/* Button Styles */
 .download-btn {
   background-color: #4caf50;
   color: white;
@@ -118,13 +149,69 @@
 .download-btn:active {
   background-color: #3d8b40;
 }
-.profile_card_foot{
-  display: flex; gap: 45px;
+
+.download-btn:focus {
+  outline: 2px solid #2e7d32;
+  outline-offset: 2px;
 }
-.btn_continer{
+
+/* Button Container */
+.btn_continer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
   padding: 0 25px 25px 25px;
+}
+
+.profile_card_foot {
+  display: flex;
+  gap: 45px;
+}
+
+/* Error Handling */
+.error-input {
+  border: 1px solid #ff0000 !important;
+}
+
+.error-message {
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 600px) {
+  .order-status-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 1rem;
+  }
+
+  .order-detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .btn_continer {
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .download-btn {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+
+  .close_btn {
+    left: auto;
+    float: right;
+  }
 }
