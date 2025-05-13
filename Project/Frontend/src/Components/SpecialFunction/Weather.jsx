@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { predictNextWeekWeather } from "../../utils/weatherPrediction";
 import PestRiskIndicator from "./PestRiskIndicator";
 import WeatherChart from "./WeatherChart";
@@ -9,6 +10,7 @@ import Chatbot from "./Chatbox";
 import "./Weather.css"; 
 
 const Weather = () => {
+  const navigate = useNavigate();
   const [forecast, setForecast] = useState([]);
   const [predictedWeather, setPredictedWeather] = useState([]);
   const [city, setCity] = useState("");
@@ -81,8 +83,15 @@ const Weather = () => {
     }
   };
 
+  const handleGoBack = () => {
+    navigate(-1); // Go back to previous page
+  };
+
   return (
     <div className="weather-wrapper">
+      <button onClick={handleGoBack} className="back-button">
+        &larr; Back
+      </button>
       <div className="weather-container">
         <div className="weather-grid">
           <div className="weather-card rainfall">

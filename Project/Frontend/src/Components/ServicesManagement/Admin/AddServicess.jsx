@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./servicess.css";
 import AdminNavBar from "../../CustomerServiceManagement/Admin/AdminNavBar";
+
 function AddServicess() {
   const [inputs, setInputs] = useState({
     serviceID: "",
@@ -10,18 +11,25 @@ function AddServicess() {
     description: "",
     serviceSet: "",
     price: "",
+    verificationCode: "" // Added verification code field
   });
+
+  const [verificationSent, setVerificationSent] = useState(false);
+  const [codeVerified, setCodeVerified] = useState(false);
+
   const generateID = () => {
     const prefix = "SID ";
     const randomNumber = Math.floor(100000000 + Math.random() * 900000000);
     return `${prefix}${randomNumber}`;
   };
+
   useEffect(() => {
     setInputs((prevInputs) => ({
       ...prevInputs,
       serviceID: generateID(),
     }));
   }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputs((prevInputs) => ({
@@ -29,10 +37,37 @@ function AddServicess() {
       [name]: value,
     }));
   };
+
+  const sendVerificationCode = async () => {
+    // In a real app, you would send this to the user's email/phone
+    // For demo, we'll just show it in an alert
+    const demoCode = Math.floor(1000 + Math.random() * 9000);
+    alert(`Your verification code is: ${demoCode}`);
+    setVerificationSent(true);
+  };
+
+  const verifyCode = () => {
+    // In a real app, you would verify this against what was sent to the user
+    // For demo, we'll just assume any 4-digit code is valid
+    if (/^\d{4}$/.test(inputs.verificationCode)) {
+      setCodeVerified(true);
+      alert("Code verified successfully!");
+    } else {
+      alert("Please enter a valid 4-digit code");
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!codeVerified) {
+      alert("Please verify your code first");
+      return;
+    }
+    
     await sendRequest();
   };
+
   const sendRequest = async () => {
     try {
       const response = await axios.post("http://localhost:8085/service", {
@@ -49,12 +84,13 @@ function AddServicess() {
       }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
-        window.alert(error.response.data.message); // Display the error message from the backend
+        window.alert(error.response.data.message);
       } else {
         window.alert("An error occurred");
       }
     }
   };
+
   return (
     <div>
       <AdminNavBar />
@@ -127,7 +163,50 @@ function AddServicess() {
             onChange={handleChange}
           />
         </div>
-        <button className="from_btn">Add Service</button>
+        
+        {/* Verification Code Section */}
+        <div className="data_form_section">
+          <label className="data_from_lable">Verification</label>
+          {!verificationSent ? (
+            <button 
+              type="button" 
+              className="from_btn"
+              onClick={sendVerificationCode}
+            >
+              Send Verification Code
+            </button>
+          ) : !codeVerified ? (
+            <div style={{display: 'flex', gap: '10px'}}>
+              <input
+                className="data_from_input"
+                type="text"
+                id="verificationCode"
+                name="verificationCode"
+                placeholder="Enter verification code"
+                value={inputs.verificationCode}
+                onChange={handleChange}
+                style={{flex: 1}}
+              />
+              <button 
+                type="button" 
+                className="from_btn"
+                onClick={verifyCode}
+              >
+                Verify
+              </button>
+            </div>
+          ) : (
+            <span style={{color: 'green'}}>✓ Verified</span>
+          )}
+        </div>
+        
+        <button 
+          className="from_btn" 
+          type="submit"
+          disabled={!codeVerified}
+        >
+          Add Service
+        </button>
       </form>
     </div>
   );
