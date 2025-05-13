@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
+import './WeatherChart.css'; 
 
 const WeatherChart = ({ forecast }) => {
   if (!Array.isArray(forecast) || forecast.length === 0) {
@@ -24,8 +25,8 @@ const WeatherChart = ({ forecast }) => {
   }));
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-lg ">
-      <h2 className="text-xl font-semibold mb-2 text-center">Next 7-Day Weather Forecast</h2>
+    <div className="weather-chart-container">
+      <h2 className="weather-chart-title">Next 7-Day Weather Forecast</h2>
       <ResponsiveContainer width="100%" height={200}>
         <LineChart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" />
