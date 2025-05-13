@@ -254,3 +254,21 @@
   margin-bottom: 20px;
   margin-bottom: 35px;
 }
+/* Error message styling */
+.error-message {
+  color: #d32f2f;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+/* Input error state */
+.input-error {
+  border-color: #d32f2f !important;
+}
+
+/* Button disabled state */
+.from_btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
