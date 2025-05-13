@@ -116,7 +116,7 @@ function AllFarmers() {
         lineWidth: 0.1,
       },
       headStyles: {
-        fillColor: [52, 73, 94],
+        fillColor: [34, 139, 34],
         textColor: 255,
         fontSize: 11,
         fontStyle: 'bold',
