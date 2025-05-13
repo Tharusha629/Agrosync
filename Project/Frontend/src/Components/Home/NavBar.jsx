@@ -36,7 +36,7 @@ function NavBar() {
               </p>
               <p
                 className="nav_item"
-                onClick={() => (window.location.href = "http://localhost:5174/")}
+                onClick={() => (window.location.href = "weather")}
               >
                 Special
               </p>
