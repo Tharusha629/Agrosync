@@ -210,6 +210,18 @@
     width: 90%;
   }
 
+  /* Add these styles to your order.css file */
+.invoice-logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.invoice-logo {
+  max-width: 10px;
+  height: 10px;
+}
+
   .close_btn {
     left: auto;
     float: right;

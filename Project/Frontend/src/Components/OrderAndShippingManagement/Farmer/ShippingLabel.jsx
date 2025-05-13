@@ -4,6 +4,7 @@ import NavBar from "../../Home/NavBar";
 import html2canvas from "html2canvas";
 import { FaFileDownload } from "react-icons/fa";
 import { BsCreditCard2Front } from "react-icons/bs";
+import logo from "../../../assets/AGS.png";
 
 function ShippingLabel() {
   const [order, setOrder] = useState(null);
@@ -46,6 +47,15 @@ function ShippingLabel() {
       <div className="order-wrapper">
         <div className="order-status-container">
           <div className="order-status-container_sub">
+            {/* Logo with reduced size */}
+            <div className="invoice-logo-container">
+              <img 
+                src={logo} 
+                alt="Company Logo" 
+                className="invoice-logo" 
+                style={{ width: '200px', height: 'auto' }} 
+              />
+            </div>
             <h1 className="order-status-title">Invoice Summary</h1>
             <div className="order-details">
               {[
